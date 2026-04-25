@@ -1,0 +1,1142 @@
+/* prima di iniziare a costruire l'estetica azzero tutto con "*" 
+per ovviare al problema di alcuni valori preimpostati di margini, padding ecc.*/
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* questa riga è fondamentale per per gestire parametro width */
+}
+
+
+body {
+  font-family: 'Jost', sans-serif; /*fallback verso sans-serif se il font Jost non dovesse caricarsi per qualsiasi motivo*/
+  color: #1a1a18;
+  background: #fdfcf8;
+  line-height: 1.7; /* ho aumentato la scala dell'interlinea perchè si legga meglio il testo*/
+  font-weight: 300;
+}
+
+
+
+/*azzero anche i colori dei testi per i link e gli attribuisco quella del testo a loro vicino e tolgo la sottolineatura*/
+a { text-decoration: none; color: inherit; } 
+ul { list-style: none; } /*tolgo i pallini di elenco dalle liste così che possa usare il carattere a freccia trovato sul web*/
+
+
+
+img {
+  max-width: 100%; /*stabilisco che tutte le immagini non possono superare in dimensioni il proprio contenitore*/
+  display: block; /* evitiamo il gap del baseline anti-estetico */
+}
+
+/*ora configuro il wrapper  che utilizzerò in ogni sezione così come nell'html
+sempre per questioni di un corretto display del testo*/
+.wrapper {
+  max-width: 1200px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+/*HERO*/
+.hero-section {
+  min-height: 100vh; /* l'hero occupa il  100 % dell'altezza visibile */
+  position: relative; /* necessario perchè gli elementi con position:absolute si posizionino di conseguenza */
+  display: flex;
+  flex-direction: column; /* con queste due righe spingiamo la strip numeri in fondo all'hero */
+  text-align: center;
+  padding: 112px 32px 0;
+  overflow: hidden;
+  align-items: center;  
+  justify-content: center; /* due righe per centrare a dovere i figli  */
+}
+
+
+
+/* di seguito un div vuoto che riceve l'immagine e la espande per tutto l'elemento genitore*/
+.sfondo-hero { 
+  top: 0; left: 0; right: 0; bottom: 0; 
+  position: absolute;
+  background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center 40%;
+}
+
+
+
+.overlay-hero /* overlay sovra-immagine per poter leggere il testo e non coprire la foto */ {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 30, 16, 0.78);  
+
+}
+
+.contenuto-hero {
+  z-index: 1; /* posiziona il contenuto sopra sfondo e overlay*/
+  max-width: 820px;
+  animation: fadesu 1s both; /* animazione di entrata, con velocità di entrata 
+  "veloce-lenta-veloce", "both" mantiene l'elemento nello stato iniziale prima dell'animazione */
+}
+
+
+
+
+.etichetta-hero {
+  display: inline-block; /* serve per applciare margin-bottom a un elemento "span"*/
+  font-size: 12px;
+  letter-spacing: 0.25em; /* distanziamento tra lettere*/
+  color: #c8a95a;
+  margin-bottom: 16px;
+  font-weight: 500;
+  animation: fadesu 1s 0.2s /* ritardo dell'animazione di 0.2 sec*/ both;
+}
+
+
+.titolo-principale {
+  font-family: 'Cormorant Garamond', serif;
+  color: #fdfcf8;
+  font-size: 96px;
+  line-height: 1;  /* interlinea pari esattamente alla dimensione del font, per avvicinare le due righe del titolo */
+  margin-bottom: 32px;
+  font-weight: 600;
+  animation: fadesu 1s  0.3s both; /* effetto a cascata dovuto ai 0,3 sec di delay
+  rispetto all'etichetta che aveva 0,2 secondi*/
+}
+
+
+
+/* usiamo un selettore che si applica solo agli <em> dentro titolo-principale
+per sovrascrivere alcune caratteristiche di "Bonifiche" */
+.titolo-principale em {
+  font-style: italic;
+  color: #c8a95a;
+  font-weight: 400;
+}
+
+.claim-hero /* sottotitolo */ {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 30px;
+  color: #c8a95a;
+  margin-bottom: 20px;
+  letter-spacing: 0.08em;
+}
+
+.sottotitolo-hero {
+  color: rgba(255,255,255,0.78); /* bianco non troppo aggressivo (bianco al 78%) */
+  max-width: 560px; /* limite in larghezza */
+  font-size: 24px;
+  margin: 0 auto 112px; /* "0" centra il blocco in orizzontale, mentre "112" 
+  crea spazio prima di strip-numeri */
+  animation: fadesu 1s 0.4s both;
+}
+
+
+
+.strip-numeri {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(10,22,11,0.82);
+  border-top: 1px solid rgba(200,169,90,0.2);
+  animation: fadesu 1s 0.7s both;
+  margin: auto -32px 0; /* permette di annullare il padding dell'hero = la striscia arriva
+  al bordo dello schermo*/
+  width: calc(100% + 64px); /* compensa la perdita di larghezza dei margini negativi 
+  "calc" dopo una ricerca su internet è stata la scelta per permettermi calcoli con unità diverse in CSS*/
+}
+
+.numero-strip {
+  flex: 1; /* ogni cella ha uguale larghezza*/
+  max-width: 240px; /* dà un massimo di larghezza */
+  text-align: center;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column; 
+  gap: 4px; /* queste due ultime righeposiziona cifra e label 
+  una sotto l'altra, con 4px di spazio tra di esse */
+}
+
+
+.separatore-strip /* questo div vuoto lo uso come linea decorativa verticale*/ {
+  width: 1px;
+  background-color: rgba(200,169,90,0.25);
+  margin: 16px 0;
+}
+
+
+
+.cifra-grande {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #c8a95a;
+  line-height: 1;
+
+}
+
+.label-cifra {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.1em;
+}
+
+
+
+@keyframes fadesu /* Definisce l'animazione usata da tutti gli elementi dell'hero, da "completamente invisibile 
+(`opacity: 0`) e spostato 24px verso il basso" a "visibile e in posizione normale". 
+Il risultato è un elemento che "sale" mentre appare. I vari elementi dell'hero hanno ritardi 
+diversi creando un effetto a cascata.*/ {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+
+
+.sezione-valori {
+  padding: 112px 0; /* padding verticale sopra e sotto */
+  background-color: #fdfcf8;
+}
+
+.layout-valori {
+  display: grid; /* imposto un layout a 2 colonne*/
+  min-height: 600px;
+  grid-template-columns: 1fr 1.6fr;
+  overflow: hidden;
+  border-radius: 16px; /*angoli arrotondati */
+  box-shadow: 0 20px 60px rgba(28,58,30,0.12);
+  /* un po' di ombra che faccia "sollevare" il blocco dal fondo della pagina*/
+}
+
+
+
+.foto-valori /* come in altri casi uso un div vuoto per ricevere l'immagine
+così che mettendo i vari "background" l'immaggine viene gestita automaticamente
+in base al contenitore */{
+  background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=100');
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+}
+
+.testo-valori {
+  padding: 64px;
+  background-color: #f5efe0;
+}
+
+.intestazione { margin-bottom: 32px; }
+
+.etichetta-sezione /* è l'etichetta che rappresenta i titoli di
+ogni sezione (laddove il colore fosse inadatto in base allo sfondo, ci sono
+etichette apposite che vengono sovrascritte a quesaìta) */ {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4a7c3f;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+
+.titolo-sezione {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  line-height: 1.15;
+  color: #1a1a18;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.intro-sezione {
+  font-size: 16px;
+  color: #4a4a42;
+
+}
+
+
+
+.griglia-card {
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  gap: 16px;
+
+}
+
+
+.card-valore {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(28,58,30,0.1);
+  background: #fdfcf8;
+  transition: transform 0.3s , box-shadow 0.3s ;
+  /* transition permette di vedere un movimento quasi
+  "graduale" verso l'alto delle
+  caselle e non uno spostamento istantaneo*/
+}
+
+.card-valore:hover /* hover si applica quando il cursore ci si trova di sopra*/{
+  transform: translateY(-5px); /* sposta 5px verso l'alto (negativo è verso su)*/
+  box-shadow: 0 12px 32px rgba(28,58,30,0.12);
+}
+
+
+
+/* per le immagini si usano 3 livelli: */
+
+
+.card-img-box /* il primo fa da "finestra" per l'immagine
+con overflow hidden che fa da maschera*/ {
+
+  height: 120px;
+  overflow: hidden;
+}
+
+
+.img-card /* il secondo riempie la finestra */{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* grazie a questo le eccedenze vengono eliminate*/
+  transition: transform 0.5s ;
+
+
+}
+/* il terzo livello è un selettore :
+img.card, che si trova dentro un .card valore in hover, applica
+uno zoom del 6% all'interno del suo riquadro (senza uscirne) */
+.card-valore:hover .img-card { transform: scale(1.06); }
+
+
+
+.card-testo-interno { padding: 14px; }
+
+.card-titolo {
+  font-family: 'Cormorant Garamond', serif;
+  color: #1c3a1e;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.card-testo {
+  color: #4a4a42;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+
+
+.sezione-citazione {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;  /* qui si nota che l'immagine di sfondo è messa direttamente su questo elemento*/
+  background-position: center;
+  padding: 112px 32px;
+  text-align: center;
+  
+}
+
+
+/* qui gestisco l'overlay, nel div figlio: */
+.overlay-cit {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(15,30,16,0.55);
+}
+
+
+
+.box-citazione {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 780px;
+  font-family: 'Cormorant Garamond', serif;
+  color: #fdfcf8;
+  font-size: 28px;
+  line-height: 1.6;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+/*  "footer" dentro "blockquote" è l'attribuzione della citazione. 
+Si resetta "font-style: normal"  perché il "blockquote" eredita 
+"font-style: italic" dal ".box-citazione" */
+.box-citazione footer {
+  margin-top: 32px;
+  font-size: 14px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  color: rgba(255,255,255,0.55);
+}
+.box-citazione cite a {
+  color: #c8a95a;
+  text-decoration: underline;
+}
+
+
+
+.sezione-storia {
+  background-color: #f5efe0; /* sfondo revisionato e cambiato in un secondo momento */ 
+  padding: 80px 0 10px;
+}
+
+.intestazione-chiara {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.etichetta-chiara {
+  display: inline-block;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c8a95a;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+
+
+.titolo-chiaro {
+
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  color:rgb(2, 1, 1);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 16px;
+
+}
+
+
+
+.intro-chiara {
+  color: rgb(4, 1, 1);
+  font-size: 24px;
+  max-width: 600px;
+  margin: 0 auto;}
+
+
+
+
+
+.timeline-box {
+  overflow-x: auto; /* barra di scorrimento per schermi piccoli*/
+  padding: 32px 0 48px;}
+
+
+
+.linea-tempo {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-width: 1500px; /* forza larghezza minima
+  attivando la scrollbar su schermi più piccoli*/
+  padding: 0 32px;
+  height: 500px;
+}
+
+.linea-orizzontale {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgb(23, 64, 6);
+  transform: translateY(-50%); /* insieme a 
+  top 50% centra la linea del tempo al centro
+  della sezione*/
+}
+
+
+
+
+
+.tappa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 220px;}
+
+.tappa-su { justify-content: flex-start; }
+
+.tappa-su .tappa-contenuto { padding-bottom: 5px; }
+
+
+.tappa-giu { justify-content: flex-start; }
+
+
+.tappa-giu .tappa-contenuto { padding-top: 260px; }
+
+.pallino {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* questo su un elemento quadrato produce un cerchio*/
+  background-color: #c8a95a;
+  border: 2px solid #2d5a27; /* questo crea un alone attorno al cerchio*/
+  box-shadow: 0 0 0 4px rgba(200,169,90,0.2); /* connesso alla riga di prima ne definisce l'ombra */
+  z-index: 1; /*  imposta il pallino sopra la linea */
+  transition: transform 0.3s ;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+
+.tappa-contenuto {
+  text-align: center;
+  max-width: 250px;
+  padding: 0 8px;
+}
+
+
+.foto-tappa /* le foto sono tag img con dimensioni fisse  */ {
+  width: 200px;
+  height: 120px;
+  object-fit: cover; /* in cui object fit cover ritaglia la foto per coprire lo spazio in maniera giusta */
+  border-radius: 8px;
+  border: 2px solid rgb(5, 57, 13);
+  margin: 0 auto 8px;
+  transition: border-color 0.3s ;}
+.tappa:hover .foto-tappa { border-color: rgb(6, 59, 17); }
+/* stando col cursore sull'immagine l'opacità si alza dal 25 al 70 percento */
+
+
+.anno-tappa {
+  display: block; /* display block diventa necessario poichè senza
+  non sarebbe possibile usare margin-bottom */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  color: #c8a95a;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.testo-tappa {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  line-height: 1.55;}
+
+.testo-tappa em { font-style: italic; color: rgb(0, 0, 0); }
+
+.fonte-timeline {
+  text-align: center;
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+  margin-top: 16px;
+}
+
+.fonte-timeline a {
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+.fonte-timeline a:hover { color: #000000; }
+
+
+
+
+.sezione-sost {
+  padding: 112px 0;
+  background-color: #f5efe0;}
+
+
+
+
+.layout-sost {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(28,58,30,0.1);
+
+}
+
+
+.colonna-testo-sost {
+  padding: 64px;
+  background-color: #fdfcf8;
+}
+.colonna-testo-sost .etichetta-sezione {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.titolo-sost /* essendo un titolo allineato diversamente
+uso una classe separata da titolo-sezione per chiarezza*/ {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #1a1a18;
+  line-height: 1.15;
+  text-align: left;
+  margin-bottom: 32px;}
+
+.colonna-testo-sost p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4a4a42;
+  margin-bottom: 16px;
+}
+
+
+/* una griglia  formato 2x2 per i numeri*/
+.griglia-numeri {
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  margin-top: 32px;
+  gap: 16px;
+}
+
+
+.box-numero {
+  background-color: #f5efe0;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(28,58,30,0.08);
+  text-align: center;
+  transition: transform 0.3s ;
+}
+
+.box-numero:hover { transform: translateY(-3px); }
+
+
+
+
+.num-grande {
+  display: block; /* senza block, cifra e label sarebbero allineati */
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 38px;
+  color: #1c3a1e;
+  line-height: 1; /* aggiunto dopo per non avere spazio extra sotto il numero */
+  margin-bottom: 5px;
+}
+
+
+
+.num-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1c3a1e;
+}
+
+.foto-sost {
+  background-image: url('https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=700&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;}
+
+
+
+
+.sezione-report {
+  padding: 112px 0;
+  background-color: #fdfcf8;
+}
+.griglia-report {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr 1fr 1fr;;
+}
+
+
+
+.card-report {
+  border: 1px solid rgb(28, 58, 30);
+  padding: 32px;
+  position: relative;
+  border-radius: 8px;
+  background: #fdfcf8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.3s , box-shadow 0.3s , border-color 0.3s ;}
+/*usato flex e flex-direction così che desc-report abbia
+il pulsante sempre infondo alla card */
+
+
+
+.card-report:hover {
+  transform: translateY(-5px);
+  border-color: rgba(28,58,30,0.2);
+  box-shadow: 0 12px 32px rgba(28,58,30,0.1);
+}
+
+.card-report-principale {
+  border-color: #2d5a27 !important;
+  background: linear-gradient(135deg, rgba(45,90,39,0.04) 0%, transparent 60%);
+}
+/* questa card è a parte poichè essendo quella più recente 
+deve avere un aspetto differente dalle altre, !important forza 
+a sovrascrivere il colore del bordo verde più marcato*/
+
+
+
+.badge-nuovo /* parametri come "top" impostati 
+per far si che il segnale "nuovo" sporga
+ fisicamente fuori dalla card */ {
+  position: absolute;
+  top: -11px;
+  right: 16px;
+  background-color: #1c3a1e;
+  color: #c8a95a;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  font-weight: 500;
+  border-radius: 20px;}
+
+
+
+.anno-report {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  color: #1c3a1e;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.titolo-report {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.3;
+  color: #1a1a18;
+  font-weight: 600;
+}
+.desc-report {
+  font-size: 14px;
+  color: #4a4a42;
+  line-height: 1.6;
+  flex-grow: 1; /* fa espandere la descrizione per occupare tutto lo spazio 
+  disponibile nella card, spingendo il pulsante in fondo*/}
+
+
+
+.btn-scarica {
+  display: block;
+  text-align: center;
+  padding: 12px 16px;
+  background-color: #1c3a1e;
+  color: #fdfcf8;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-top: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+
+
+
+.sezione-rigenerativa {
+  padding: 112px 0;
+  background-color: #f5efe0;
+}
+
+.layout-rig {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  min-height: 580px;
+  border-radius: 16px;  /*layout inverso alla sezioen valori, per dare varietà*/
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(28,58,30,0.1);
+}
+
+.foto-rig {
+  background-image: url('https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=700&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.testo-rig {
+  padding: 64px;
+  background-color: #1c3a1e;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.testo-rig .etichetta-sezione { color: #c8a95a; } /* come etichetta-chiara, anche qui bisogna 
+sovrascrivere il colore dell'etichetta-sezione */
+.testo-rig .titolo-sezione { color: #fdfcf8; }
+
+.testo-rig p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.8;
+}
+
+.lista-punti {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.punto-item {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  
+}
+
+/* nella lista che compare nella pagina web, ogni riga della lista è formata da
+div + due span, uno per il simbolo della freccia, uno per il testo. Usiamo questo anzichè
+"<ul>/<li>"  per rendere il simbolo della freccia modificabile a sè*/
+
+.punto-icona {
+  color: #c8a95a;
+  font-weight: 700;
+  flex-shrink: 0; /* questa riga impedisce alla freccia di comprimersi */
+}
+
+
+
+.sezione-bio {
+  background-image: url('https://images.unsplash.com/photo-1473221326025-9183b464bb7e?auto=format&fit=crop&w=1920&q=80'); 
+  background-size: cover;
+  background-position: center;
+  padding: 112px 0;
+  background-color: #1c3a1e;
+  position: relative;
+}
+
+
+
+.overlay-bio {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(28, 58, 30, 0.88);
+}
+
+.bio-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.etichetta-chiara-v2 { color: #c8a95a !important; }
+/* questo parametro è importante per la sovrascrittura del colore di "etichetta-sezione"
+che altrimenti resterebbe invisibile sullo sfondo verde scuro
+("!important" forza la sovrascrittura ignorando la specificità del selettore) */
+
+
+
+
+
+.titolo-bio {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  color: rgb(3, 44, 9);
+  line-height: 1.15;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.intro-bio {
+  font-size: 16px;
+  color: rgba(3, 44, 9);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.griglia-bio {
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 1fr;
+  gap: 24px;
+}
+
+
+.card-bio {
+  border: 1px solid rgba(200,169,90,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f5efe0;
+  transition: transform 0.3s , border-color 0.3s ;
+}
+
+
+.card-bio:hover {
+  transform: translateY(-5px);
+  border-color: rgba(200,169,90,0.5); 
+}
+
+
+
+.card-bio-img-wrap {
+  height: 180px;       /* il sitema segnato dai commenti viene usato anche per le card della sezione valori*/
+  overflow: hidden;    /* ovvero : contenitore con altezza fissa e overflow hidden, immagine che lo riempie con object-fit cover, zoom al hover*/
+}                      /* (il sistema intero è stato comunque modificato così dopo un paio di interventi) */
+
+.card-bio-img {
+  width: 100%;
+  height: 100%;                          /* */
+  object-fit: cover;
+  transition: transform 0.5s ;
+}
+
+.card-bio:hover .card-bio-img { transform: scale(1.05); }     /* */
+
+
+
+
+.card-bio-corpo { padding: 24px; }
+
+.card-bio-titolo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: #c8a95a;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-bio-testo {
+  font-size: 14px;
+  color: rgba(2, 25, 5, 0.863);
+  line-height: 1.7;
+}
+
+
+.sezione-filiera {
+  padding: 112px 0;
+  background-color: #fdfcf8;
+}
+
+.layout-filiera {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 80px; /*uso un gap un po' più largo del solito per dare ordine */
+}
+
+
+
+.filiera-testo .etichetta-sezione {
+  display: block;
+  margin-bottom: 16px;
+}
+
+
+.filiera-testo .titolo-sezione {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+
+
+.filiera-testo p {
+  font-size: 15px;
+  color: #4a4a42;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.filiera-testo strong {
+  color: #1c3a1e;
+  font-weight: 500;
+}
+
+.filiera-dati {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.dato-filiera {
+  padding: 20px 24px;
+  background-color: #f5efe0;
+  border-left: 3px solid #c8a95a; /* questo applica un bordo leggero e dorato al lato sinistro */
+  border-radius: 0 8px 8px 0; /* scritti così perchè si applicano in senso orario, a 
+  partire dall'angolo sinistro (gli angoli sinistri saranno appuntiti per scelta stilistica a causa della 
+  presenza della barra color oro */
+  transition: background-color 0.3s ;
+}
+
+.dato-filiera:hover { background-color: #ede4ce; }
+
+
+
+.dato-num {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1c3a1e;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+
+.dato-desc {
+  font-size: 13px;
+  color: #4a4a42;
+  line-height: 1.4;
+}
+
+
+.piede-pagina {
+  background-color: #1c3a1e;
+  color: rgba(255,255,255,0.7);
+  padding: 64px 0 32px;
+}
+
+
+
+/* imposto il footer come con due colonne, più larga per le fonti ( dx )
+e più stretta per nome e dati dell'azienda in questione */
+.layout-footer {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 64px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid #ffffff1a; /* questa è la linea un po' meno visibile che separa 
+  la nota sull'utilizzo della pagina dal resto del footer  */
+
+}
+
+
+
+.nome-azienda {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: #fdfcf8;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+
+.indirizzo {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.link-sito-uff {
+  font-size: 14px;
+  color: #c8a95a;
+  text-decoration: underline;
+}
+
+.link-sito-uff:hover { color: #e6c87c; }
+
+
+
+.titolo-fonti {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+
+.lista-fonti {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.lista-fonti li { font-size: 13px; line-height: 1.5; }
+
+
+
+.lista-fonti a {
+  color: #c8a95a;
+  text-decoration: underline;
+}
+
+.lista-fonti a:hover { color: #e6c87c; }
+
+
+
+
+.footer-bottom {
+  padding-top: 32px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+/* Tutto quello che viene di seguito sono variaizioni in base al
+ dispositivo usato per la visualizzazione della pagina: */
+
+ /* in questa prima sezione ci sono dei parametri fatti apposta per
+ una visione ottimizzata sui tablet ( si parla praticamente di 
+ semplificazioni nelle visualizzazioni delle colonne) */
+@media (max-width: 1024px) {
+  .layout-valori { grid-template-columns: 0.8fr 1.6fr; }
+  .layout-rig { grid-template-columns: 1fr; }
+  .griglia-bio { grid-template-columns: 1fr, 1fr; }
+  .layout-filiera { grid-template-columns: 1fr; gap: 48px; }
+  .foto-sost { min-height: 300px; }
+  .griglia-report { grid-template-columns: 1fr, 1fr; }
+}
+
+/* qui invece si va a trattare la visualizzazione su mobile*/
+@media (max-width: 768px) {
+  .hero-section { min-height: 90vh; }
+
+  .strip-numeri { flex-direction: column; align-items: center; }
+  .separatore-strip { width: 40px; height: 1px; margin: 0 auto; }
+
+
+  .layout-valori { grid-template-columns: 1fr; }
+
+  .foto-valori { min-height: 250px; }
+  
+  .griglia-card { grid-template-columns: 1fr; }
+  
+  .testo-valori { padding: 32px; }
+
+  .griglia-report { grid-template-columns: 1fr; }
+
+
+
+  
+  .layout-rig { grid-template-columns: 1fr; }
+  
+  .foto-rig { min-height: 300px; }
+  
+  .griglia-bio { grid-template-columns: 1fr; }
+  
+  .layout-filiera { grid-template-columns: 1fr; gap: 48px; }
+
+
+  
+  .colonna-testo-sost { padding: 32px; }
+  
+  .titolo-sost { text-align: center; }
+  
+  .colonna-testo-sost .etichetta-sezione { text-align: center; display: block; }
+
+  
+  
+  .titolo-principale { font-size: 56px; }
+  
+  
+  .titolo-sezione { font-size: 34px; } /* il titolo principale si riduce di 40 px*/
+  
+  .titolo-chiaro { font-size: 34px; } /* mentre i titoli di sezione di 14 px */ 
+  
+  
+  .titolo-sost { font-size: 34px; }
+  
+  .titolo-bio { font-size: 34px; }
+  
+  .layout-footer { grid-template-columns: 1fr; gap: 32px; }
+}

@@ -1,0 +1,658 @@
+<!-- Iniizializzo tutta la pagina, specificando DOCTYPE, lingua e caratteri, dopodichè nell'head inserisco link e collegamento al foglio
+ style.css separato così da avere sia un codice ordinato sia una certa comodità nell'andare a modificare parametri, scritture e elementi
+ estetici -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bonifiche Ferraresi — storia, valori e sostenibilità del più grande gruppo agroindustriale italiano.">
+<title>Bonifiche Ferraresi — Sostenibilità</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">  <!--apriamo già ora un collegamento per scaricare le immagini, questione di ottimizzazione-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- crossorigin serve perchè questo collegamento ha un dominio diverso da quello principale-->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<!-- per lo scaricamento dei fonts da google fonts uso dei parametri ricercati appositamente per avere disponibli solo i fonts necessari, e non tutto il pacchetto inutilmente-->
+
+
+<!--Finito questo, la prossima parte è aprire il body e partire con il dare forma all'hero, uso quest'ultimo poichè il tipo di pagina 
+che vorrei risultasse fosse modello "landing page", ovvero una pagina accattivante e che faccia venire voglia al lettore
+di continuare a leggere, senza annoiarsi. L'HERO ci permette quindi di creare un bel primo impatto visivo -->
+
+
+<body>
+
+<div class="hero-section" id="home">  <!-- aggiunto in un secondo momento id="home" se fosse neccessario aggiungere un tasto "torna su" successivamente-->
+  <div class="sfondo-hero"></div>
+  <div class="overlay-hero"></div> <!-- aggiunta necessaria , il testo era illeggibile-->
+
+<!-- ultime due righe sopra sonon un dettaglio, inseriamo la fotografia di sfondo tramite "background-image" nel CSS
+ così sono in grado di modificare le proprietà dell'immagine senza intaccare il testo sovrastante -->
+
+
+  <div class="contenuto-hero">
+    <span class="etichetta-hero">DAL 1871 — SETTORE PRIMARIO ITALIANO</span>
+    <h1 class="titolo-principale">Bonifiche<br><em>Ferraresi</em></h1>
+    <p class="claim-hero">Il vero "Made in Italy"</p>
+    <p class="sottotitolo-hero">
+      Il più grande gruppo agroindustriale italiano, custode di oltre
+      150 anni di terra, innovazione e responsabilità verso il futuro.
+    </p>
+  </div>
+
+  <div class="strip-numeri">
+    <div class="numero-strip">
+      <span class="cifra-grande">1871</span>
+      <span class="label-cifra">Anno di fondazione</span>  <!-- cerco di mantenere sempre lo stesso tipo di struttura -->
+    </div>                                               <!-- così da avere più facilità nella ricerca di parti per evetuali modifiche-->
+    <div class="separatore-strip"></div>
+    <div class="numero-strip">
+      <span class="cifra-grande">15.000+</span>
+      <span class="label-cifra">Ettari coltivati</span>
+    </div>
+    <div class="separatore-strip"></div>
+    <div class="numero-strip">
+      <span class="cifra-grande">800+</span>
+      <span class="label-cifra">Ettari di bosco rigenerato</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="sezione-valori" id="valori">
+  <div class="wrapper">
+<!-- userò (quasi) sempre la struttura "sezione +  wrapper" così da assicurarmi una corretta visualizzazione
+ di ogni parte del contenuto, anche su dispositivi diversi-->
+
+    <div class="layout-valori">
+
+      <div class="foto-valori" role="img" aria-label="Un tipico raccolto prodotto da un'azienda agricola"></div>
+<!-- aria-label inserito in un secondo momento dopo varie revisioni, permette di migliorare l'accessibilità del contenuto
+ anche a chi ha difficoltà e si trova in condizioni differenti da quelle della maggior parte degli utenti-->
+      <div class="testo-valori">
+        <div class="intestazione">
+          <span class="etichetta-sezione">La nostra mentalità</span>
+          <h2 class="titolo-sezione">Quattro pilastri,<br>una visione</h2>  <!-- h1 -> H2 -> h3 -->
+          <p class="intro-sezione">
+            Ogni scelta del Gruppo BF è orientata da principi che
+            guidano l'intera filiera, dalla semina alla distribuzione.
+          </p>
+        </div>
+
+        <div class="griglia-card">
+
+          <div class="card-valore">
+            <div class="card-img-box">
+              <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=400&q=75"
+                alt="Foglia verde in simbolo di rispetto per l'ambiente" class="img-card" loading="lazy">
+                <!-- Url unplash dell'immagine usata contiene parametri per la corretta visualizzazione e per l'ottimizzazione
+                 in fase di caricamento della pagina-->
+                 <!-- "alt" descrive l'immagine per chi ha le immagini disattivate sul proprio borwser-->
+            </div>
+            <div class="card-testo-interno">
+              <h3 class="card-titolo">Ambiente e Paesaggio</h3>
+              <p class="card-testo">Il rispetto del territorio non è una scelta tattica ma
+              una condizione esistenziale. Il Gruppo tutela biodiversità
+              e qualità del suolo in ogni azienda agricola.</p>
+            </div>
+          </div>
+          <!-- questa struttura è abbastanza ottimale e pertanto la userò quasi
+          per ogni card: contenitore esterno -> box immagine -> img -> poi box testo e infine "h3" e "p"--> 
+
+          <div class="card-valore">
+            <div class="card-img-box">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=75"
+                alt="Immagine rappresntante analisi documentale" class="img-card" loading="lazy">
+            </div>
+            <div class="card-testo-interno">
+              <h3 class="card-titolo">Sostenibilità Economica</h3>
+              <p class="card-testo">La prosperità di lungo periodo è possibile solo se fondata
+              su basi solide. Il Gruppo adotta un'ottica di sviluppo
+              intergenerazionale e responsabile.</p>
+            </div>
+          </div>
+
+          <div class="card-valore">
+            <div class="card-img-box">
+              <img src="https://images.unsplash.com/photo-1473445730015-841f29a9490b?auto=format&fit=crop&w=400&q=75"
+                alt="Acqua in natura, simboleggia la gestione risorse" class="img-card" loading="lazy">
+            </div>
+            <div class="card-testo-interno">
+              <h3 class="card-titolo">Gestione delle Risorse</h3>
+              <p class="card-testo">Acqua, suolo, energia: risorse finite che richiedono cura.
+              Il Gruppo investe in irrigazione di precisione e riduzione
+              degli sprechi per le generazioni future.</p>
+            </div>
+          </div>
+
+          <div class="card-valore">
+            <div class="card-img-box">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=75"
+                alt="Tecnologia digitale, l'agricoltura di precisione" class="img-card" loading="lazy">
+            </div>
+            <div class="card-testo-interno">
+              <h3 class="card-titolo">Agricoltura di Precisione</h3>
+              <p class="card-testo">Sensori, data analytics e soluzioni Agritech ottimizzano
+              ogni fase produttiva, riducendo l'impatto ambientale e
+              migliorando la qualità dei raccolti.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<!-- INIZIO SEZIONE CITAZIONE, con link della pagina web dove viene presa-->
+
+
+
+<div class="sezione-citazione">
+  <div class="overlay-cit"></div>
+  <div class="wrapper">
+    <blockquote class="box-citazione"> <!-- il blockquote è il tag che ho ricercato appositamente per questa citazione-->
+      <p>"Il Gruppo BF vuole essere un hub in grado di potenziare
+      le opportunità dei propri stakeholder attraverso l'incrocio
+      di competenze complementari e lo sviluppo di know-how
+      basato sulla collaborazione e sull'esperienza condivisa."</p>
+      <footer>— <cite><a href="https://www.bfspa.it/it/il-gruppo/sostenibilita" target="_blank" rel="noopener noreferrer">Gruppo BF S.p.A., bfspa.it</a></cite></footer>
+    </blockquote>  <!-- importante!! il "rel="noopener noreferrer" protegge la pagina web da attacchi di tabnabbing inverso, questa scelta è stata implementata in un secondo momento--> 
+  </div>
+</div>
+
+
+<div class="sezione-storia" id="storia">
+  <div class="wrapper">
+
+    <div class="intestazione-chiara">
+      <span class="etichetta-chiara">La nostra storia</span>
+      <h2 class="titolo-chiaro">150 anni di terra<br>e trasformazione</h2>
+      <p class="intro-chiara"> <!-- le classi con "chiaro" sono varianti volute perchè si abbia un colore del testo adatto allo sfondo-->
+        Da un'impresa di bonifica britannica ai campi dell'Emilia Romagna,
+        della Toscana e della Sardegna: un percorso secolare che ha plasmato
+        l'identità di Bonifiche Ferraresi.
+      </p>
+    </div>
+
+
+
+
+    <div class="timeline-box">
+      <div class="linea-tempo">
+        <div class="linea-orizzontale"></div>
+      <!--qui faro la sezione della linea del tempo con le tappe dell'azienda, 
+      alternero' una tappa su e una giu' e cosi via, rispettivamente invertendo l'ordine degli elementi-->
+
+        <div class="tappa tappa-su">
+          <div class="tappa-contenuto">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=240&h=140&q=70"
+              alt="Paesaggio agricolo storico del 1871" class="foto-tappa" loading="lazy">
+            <strong class="anno-tappa">1871</strong>
+            <p class="testo-tappa">A Londra nasce la <em>Ferrarese Land Reclamation Company</em>,
+            con la missione di bonifica, a Ferrara</p>
+          </div>
+          <div class="pallino"></div>
+        </div>
+
+
+
+
+        <div class="tappa tappa-giu">
+          <div class="pallino"></div>
+
+
+          <div class="tappa-contenuto">
+            <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=240&h=140&q=70"
+              alt="Bestiame al pascolo" class="foto-tappa" loading="lazy">
+            <strong class="anno-tappa">Anni '90</strong>
+            <p class="testo-tappa">L'azienda passa ad azionisti privati e istituzionali italiani,
+            con l'ambizione di creare un polo agroindustriale europeo.</p>
+          </div>
+        </div>
+
+        <div class="tappa tappa-su">
+          <div class="tappa-contenuto">
+            <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=240&h=140&q=70"
+              alt="Un trattore" class="foto-tappa" loading="lazy">
+            <strong class="anno-tappa">2015</strong>
+            <p class="testo-tappa">Avvio del Piano Industriale 2015-2019: investimenti in
+               modernizzazione delle pratiche agricole.</p>
+          </div>
+          <div class="pallino"></div>
+        </div>
+
+        <div class="tappa tappa-giu">
+          <div class="pallino"></div>
+          <div class="tappa-contenuto">
+            <img src="https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?auto=format&fit=crop&w=240&h=140&q=70"
+              alt="Vegetazione varia" class="foto-tappa" loading="lazy">
+            <strong class="anno-tappa">2018</strong>
+            <p class="testo-tappa">Primo <em>Bilancio di Sostenibilità</em> pubblicato volontariamente:
+            nasce la rendicontazione su ambiente, comunità e governance.</p>
+          </div>
+        </div>
+
+        <div class="tappa tappa-su">
+          <div class="tappa-contenuto">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=240&h=140&q=70"
+              alt="Tecnologia digitale in Agritech, anno 2021" class="foto-tappa" loading="lazy">
+            <strong class="anno-tappa">2021</strong>
+            <p class="testo-tappa">Il Gruppo diventa infrastruttura Agritech: dalla
+            <em>Land &amp; Food Company</em> alla piattaforma digitale.</p>
+          </div>
+          <div class="pallino"></div>
+        </div>
+
+        <div class="tappa tappa-giu">
+          <div class="pallino"></div>
+          <div class="tappa-contenuto">
+            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=500&q=75"
+              alt="Prodotti di origine BIO" class="foto-tappa" loading="lazy">
+            <strong class="anno-tappa">Oggi</strong>
+            <p class="testo-tappa">Oltre 15.000 ettari in tre regioni italiane, con un modello
+            scalabile al servizio dell'intera filiera agro-industriale.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <p class="fonte-timeline">Fonte: <a href="https://www.bfspa.it/it/il-gruppo/storia" target="_blank" rel="noopener noreferrer">bfspa.it — Storia del Gruppo BF</a></p>
+<!-- sempre lo stesso "rel="noopener noreferrer""-->
+  </div>
+</div>
+
+
+<div class="sezione-sost" id="sostenibilita">
+  <div class="wrapper">
+    <div class="layout-sost">
+    
+
+
+      <div class="colonna-testo-sost">
+        <span class="etichetta-sezione">Il percorso</span>
+        <h2 class="titolo-sost">Un impegno che<br>cresce ogni anno</h2>
+
+        <p>La sostenibilità non è arrivata in Bonifiche Ferraresi come risposta
+        a una normativa esterna. È emersa dalla natura stessa dell'attività
+        agricola: chi lavora la terra sa che il futuro dipende da quanto bene
+        si tratta il presente.</p>
+
+
+
+
+
+        <p>A partire dal 2018, il Gruppo ha scelto di rendicontare formalmente
+        questo impegno attraverso dichiarazioni non finanziarie redatte secondo
+        gli standard internazionali GRI, fotografando ogni anno i progressi
+        in ambito ambientale, sociale e di governance.</p>
+
+
+
+        <p>Tra le iniziative più significative: la transizione verso l'agroecologia,
+        la riduzione dell'intensità di lavorazione del suolo, pratiche zootecniche
+        basate su prodotti 100% vegetali, e collaborazioni con università e
+        centri di ricerca per nuove soluzioni agronomiche.</p>
+
+        <div class="griglia-numeri">
+          <div class="box-numero">
+            <span class="num-grande">2018</span>
+            <span class="num-label">Anno del primo Bilancio di Sostenibilità</span>
+          </div>
+          <div class="box-numero">
+            <span class="num-grande">+20</span>
+            <span class="num-label">Colture diverse coltivate</span>
+
+          </div>
+
+
+
+          <div class="box-numero">
+            <span class="num-grande">6</span>
+            <span class="num-label">Report pubblicati</span>
+          </div>
+
+
+          <div class="box-numero">
+            <span class="num-grande">3</span>
+            <span class="num-label">Regioni italiane</span>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="foto-sost" role="img" aria-label="Immagine rappresentante coltivazioni sostenibili e l'impegno ambientale del Gruppo BF"></div>
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<div class="sezione-report" id="report">
+  <div class="wrapper">
+
+
+
+    <div class="intestazione" style="text-align:center; margin-bottom:60px;">
+      <span class="etichetta-sezione">Documentazione ufficiale</span>
+      <h2 class="titolo-sezione">Scarica ora il: <br> Report di Sostenibilità</h2>
+      <p class="intro-sezione" style="max-width:600px; margin:0 auto;">
+        Bilanci di Sostenibilità e Dichiarazioni Non Finanziarie pubblicati
+        annualmente dal Gruppo BF. Tutti i PDF sono originali e scaricabili
+        direttamente dal sito ufficiale dell'azienda.
+      </p>
+    </div>
+
+    <div class="griglia-report">
+
+
+      <div class="card-report card-report-principale"> <!-- la card rilevante per noi è questa, perciò inserisco un'altra 
+        classe così che possa dargli caratteristiche diverse-->
+        <div class="badge-nuovo">Più recente</div>
+        <span class="anno-report">2023</span>
+        <h3 class="titolo-report">Dichiarazione Non Finanziaria (ultima disponible)</h3>
+        <p class="desc-report">Rendicontazione consolidata ai sensi del D.Lgs. 254/2016.
+        Obiettivi ESG per il periodo 2023–2027.</p>
+
+        <a href="https://www.bfspa.it/files/00232/9.gruppobfdnf2023.30.04.24v.definitiva.pdf"
+          target="_blank" rel="noopener noreferrer"
+          class="btn-scarica" aria-label="Scarica il Report  di sostenibilità 2023 da fonti ufficiali">
+          ↓ Scarica PDF 
+        </a> <!-- link ha due attributi importanti, "target="_blank"" apre il PDF in una nuova pagina, senza perdere quella attuale, 
+        e "download" che dice  al browser di scaricare il file direttamente  -->
+      </div>
+
+
+
+      <div class="card-report">
+        <span class="anno-report">2022</span>
+        <h3 class="titolo-report">Dichiarazione Non Finanziaria</h3>
+        <p class="desc-report">Analisi delle prestazioni ambientali, sociali ed economiche
+        del Gruppo nell'esercizio 2022.</p>
+        <a href="https://www.bfspa.it/files/00232/bfdnf2022.pdf"
+          target="_blank" rel="noopener noreferrer" download
+          class="btn-scarica" aria-label="Scarica il Report  di sostenibilità 2022 da fonti ufficiali">
+          ↓ Scarica PDF
+        </a>
+      </div>
+
+
+      <div class="card-report">
+        <span class="anno-report">2021</span>
+        <h3 class="titolo-report">Da Land &amp; Food-Company a infrastruttura Agritech</h3>
+        <p class="desc-report">Un anno di svolta: il Gruppo evolve verso la piattaforma
+        digitale integrata al servizio della filiera.</p>
+        <a href="https://www.bfspa.it/files/00232/bilanciosostenibilita2021.pdf"
+          target="_blank" rel="noopener noreferrer" download
+          class="btn-scarica" aria-label="Scarica il Report  di sostenibilità 2021 da fonti ufficiali">
+          ↓ Scarica PDF
+        </a>
+      </div>
+
+
+
+      <div class="card-report">
+        <span class="anno-report">2020</span>
+        <h3 class="titolo-report">Dal Seme alla Tavola (2020)</h3>
+        <p class="desc-report">Rendicontazione della filiera completa: dalla produzione
+        agricola alla distribuzione del prodotto finito.</p>
+        <a href="https://www.bfspa.it/files/00232/bilanciosostenibilita2020.pdf"
+          target="_blank" rel="noopener noreferrer" download
+          class="btn-scarica" aria-label="Scarica il Report  di sostenibilità 2020 da fonti ufficiali">
+          ↓ Scarica PDF
+        </a>
+      </div>
+
+
+      <div class="card-report">
+        <span class="anno-report">2019</span>
+        <h3 class="titolo-report">Dal Seme alla Tavola</h3>
+        <p class="desc-report">Secondo Bilancio di Sostenibilità: consolidamento del metodo GRI
+        e approfondimento dei temi di responsabilità sociale.</p>
+        <a href="https://www.bfspa.it/files/00232/bilanciodisostenibilit2019.pdf"
+          target="_blank" rel="noopener noreferrer" download
+          class="btn-scarica" aria-label="Scarica il Report  di sostenibilità 2019 da fonti ufficiali">
+          ↓ Scarica PDF
+        </a>
+      </div>
+
+
+
+
+      <div class="card-report">
+        <span class="anno-report">2018</span>
+        <h3 class="titolo-report">Dal Genoma allo Scaffale</h3>
+        <p class="desc-report">Il primo Bilancio di Sostenibilità del Gruppo BF: l'avvio
+        di un percorso volontario di trasparenza e rendicontazione.</p>
+        <a href="https://www.bfspa.it/files/00232/bfbilanciosostenibilita2018definitivo.pdf"
+          target="_blank" rel="noopener noreferrer" download
+          class="btn-scarica" aria-label="Scarica il Report  di sostenibilità 2018 da fonti ufficiali">
+          ↓ Scarica PDF
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- I LINK SONO TUTTI PROVENIENTI DA FONTI UFFICIALI-->
+
+
+
+<div class="sezione-rigenerativa">
+  <div class="wrapper">
+    <div class="layout-rig">
+      <!-- il display risultante di questa pagina è inverso rispetto alla sezione "sostenibilità"
+       perchè dia un po' di varietà a livello visivo-->
+
+      <div class="foto-rig" role="img" aria-label="Immagine di Tenuta Le Piane, con bosco e terreni rigenerati del Gruppo BF"></div>
+
+      <div class="testo-rig">
+        <span class="etichetta-sezione">Agricoltura Rigenerativa</span> 
+        <h2 class="titolo-sezione">La terra si prende<br>cura di se stessa</h2>
+        <p>Nella Tenuta Le Piane, in Toscana, il Gruppo BF ha avviato un piano
+        di rigenerazione da 2 milioni di euro che coinvolge oltre 800 ettari di bosco.
+        L'obiettivo non è solo produrre, ma restituire al territorio ciò che nel tempo
+        gli è stato sottratto.</p>
+        <p>Il progetto integra bestiame, foreste e terreni agricoli in un sistema
+        a ciclo chiuso: i bovini di razza Maremmana pascolano su campi avvicendati,
+        ripristinando il prato stabile e apportando sostanza organica al suolo.
+        La foresta circostante protegge la biodiversità e crea una simbiosi
+        naturale con la produzione agronomica.</p>
+        <p>È l'agricoltura rigenerativa applicata su scala reale: non una promessa
+        nel bilancio di sostenibilità, ma un cantiere aperto sui propri terreni.</p>
+
+
+        
+        <div class="lista-punti">
+          <div class="punto-item"> <!-- usiamo div e span così che possa controllare personalizzazioni varie con più autonomia-->
+            <span class="punto-icona">↳</span> <!-- il carattere "↳" è un carattere Unicode preso da Internet e lo tratto indpendentemente dal resto del testo-->
+            <span>800+ ettari di bosco in recupero attivo</span>
+          </div>
+          <div class="punto-item">
+            <span class="punto-icona">↳</span>
+            <span>Pascolo rotazionale per il ripristino del suolo</span>
+          </div>
+
+          <div class="punto-item">
+            <span class="punto-icona">↳</span>
+            <span>Integrazione foresta–agricoltura–allevamento</span>
+          </div>
+          <div class="punto-item">
+            <span class="punto-icona">↳</span>
+            <span>Tutela della biodiversità locale</span>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+<div class="sezione-bio">
+  <div class="wrapper">
+
+    <div class="bio-header">
+      <span class="etichetta-sezione etichetta-chiara-v2">Il biologico</span> <!-- la classe "etichetta chiara v2 è necessaria poichè altrimenti il testo sarebbe illegibile
+      perciò la uso per bypassare questo problema e sovrascrivere il colore da verde a oro"-->
+      <h2 class="titolo-bio">BF Bio — quando<br>l'idea diventa sistema</h2>
+      <p class="intro-bio">
+        Con la nascita di BF Bio, il Gruppo formalizza il proprio impegno
+        verso un'agricoltura senza chimica di sintesi, in accordo con i ritmi
+        della natura e le esigenze del mercato biologico italiano.
+      </p>
+    </div>
+
+    <div class="griglia-bio">
+
+      <div class="card-bio">
+        <div class="card-bio-img-wrap">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=500&q=75"
+            alt="Coltivazioni biologiche" loading="lazy" class="card-bio-img">
+        </div> <!-- per variare il codice qua uso img invece di background su CSS, tecniche diverse ma il risultato è lo stesso, ma uso meno righe di codice-->
+        <div class="card-bio-corpo">
+          <h3 class="card-bio-titolo">Filiera 100% biologica</h3>
+          <p class="card-bio-testo">BF Bio opera in accordo con EcorNaturaSì per portare
+          prodotti biologici certificati sulla tavola degli italiani. Dalla semina
+          alla distribuzione, ogni fase è tracciata e rispettosa dell'ecosistema.</p>
+        </div>
+      </div>
+
+      <div class="card-bio">
+        <div class="card-bio-img-wrap">
+          <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=500&q=75"
+            alt="Prodotti senza utilizzo di chimica, agricoltura naturale" loading="lazy" class="card-bio-img">
+        </div>
+        <div class="card-bio-corpo">
+          <h3 class="card-bio-titolo">Riduzione della chimica</h3>
+          <p class="card-bio-testo">L'accordo con Legambiente ha accelerato la transizione
+          verso pratiche a basso impatto chimico. Irrigazione di precisione, sensori
+          e monitoraggio del suolo sostituiscono dove possibile i trattamenti tradizionali.</p>
+        </div>
+      </div>
+
+      <div class="card-bio">
+        <div class="card-bio-img-wrap">
+          <img src="https://images.unsplash.com/photo-1596733430284-f7437764b1a9?auto=format&fit=crop&w=500&q=75"
+            alt="Animali al pascolo in libertà" loading="lazy" class="card-bio-img">
+        </div>
+        <div class="card-bio-corpo">
+          <h3 class="card-bio-titolo">Benessere animale</h3>
+          <p class="card-bio-testo">In zootecnia il Gruppo ha eliminato l'utilizzo di
+          additivi chimici: gli animali vengono allevati con prodotti 100% vegetali,
+          senza farmaci di sintesi, riducendo le emissioni in atmosfera
+          e migliorando la qualità dei prodotti.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="sezione-filiera">
+  <div class="wrapper">
+    <div class="layout-filiera">
+
+      <div class="filiera-testo">
+        <span class="etichetta-sezione">La filiera italiana</span>
+        <h2 class="titolo-sezione">Dal campo alla tavola,<br>tutto Made in Italy</h2>
+        <p>Il Gruppo BF controlla direttamente ogni fase della produzione:
+        dalla selezione della semente alla trasformazione industriale,
+        fino alla distribuzione nella Grande Distribuzione Organizzata
+        con i propri brand — <strong>Le Stagioni d'Italia</strong> e <strong>BIA</strong>.</p> <!-- uso "strong" per rafforzare visivamente i nomi delle aziende portanti-->
+        <p>Questo controllo verticale non è solo una scelta commerciale:
+        è lo strumento che permette di garantire standard ambientali
+        coerenti lungo tutta la filiera, tracciando ogni passaggio
+        e assicurando che la sostenibilità non si fermi al cancello dell'azienda agricola.</p>
+        <p>La partnership con ISMEA ha esteso il modello di agricoltura
+        di precisione del Gruppo a circa 145.000 ettari di altre imprese
+        agricole italiane, moltiplicando l'impatto ambientale positivo
+        ben oltre i confini del Gruppo.</p>
+      </div>
+
+      <div class="filiera-dati">
+        <div class="dato-filiera">
+          <span class="dato-num">2.000.000€</span>
+          <span class="dato-desc">Di investimento nel progetto rigenerativo, nella sua interezza</span>
+        </div>
+        <div class="dato-filiera">
+
+
+          <span class="dato-num">100%</span>
+          <span class="dato-desc">Filiera Made in Italy — dalla semina alla distribuzione</span>
+        </div>
+        <div class="dato-filiera">
+          <span class="dato-num">2</span>
+          <span class="dato-desc">Brand di distribuzione di proprietà (Le Stagioni d'Italia e BIA)</span>
+        </div>
+        <div class="dato-filiera">
+          <span class="dato-num">+500</span>
+          <span class="dato-desc">Aziende servite dalla piattaforma Agrtiech BF</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<footer class="piede-pagina">
+  <div class="wrapper">
+    <div class="layout-footer"> <!-- dopo un'approfondimento online ho cambiato il precedenti div in un footer, più adatto per una chiusura a piè di pagina-->
+
+      <div class="footer-azienda">
+        <p class="nome-azienda">BF — Bonifiche Ferraresi</p>
+        <p class="indirizzo">Via Cavicchini, 2<br>Jolanda di Savoia (FE)</p>
+        <a href="https://www.bfspa.it" target="_blank" rel="noopener noreferrer" class="link-sito-uff">Visita il sito ufficiale →</a>
+      </div>
+
+      <div class="footer-fonti">
+        <h3 class="titolo-fonti">Fonti</h3>
+        <ul class="lista-fonti">
+
+
+
+          <li><a href="https://www.bfspa.it/it/il-gruppo/sostenibilita" target="_blank" rel="noopener noreferrer">bfspa.it — Pagina Sostenibilità</a> — testi, valori, PDF report</li>
+          <li><a href="https://www.bfspa.it/it/il-gruppo/storia" target="_blank" rel="noopener noreferrer">bfspa.it — Storia del Gruppo BF</a> — dati storici e tappe aziendali</li>
+          <li><a href="https://www.bfspa.it/files/00232/9.gruppobfdnf2023.30.04.24v.definitiva.pdf" target="_blank" rel="noopener noreferrer">DNF 2023 (PDF ufficiale)</a> — dichiarazione non finanziaria consolidata</li>
+          <li>Immagini: <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a> (licenza free)</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+
+
+
+    <div class="footer-bottom">
+    <p>Contenuti © Gruppo BF S.p.A. — Questa pagina è stata realizzata a scopo didattico nell'ambito di un progetto per l'Università Telematica Pegaso — Corso di Laurea L-31.</p>
+    <p> Autore : Mattia Sebastiano Mordà</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

@@ -73,6 +73,7 @@ sempre per questioni di un corretto display del testo*/
   max-width: 820px;
   animation: fadesu 1s both; /* animazione di entrata, con velocità di entrata 
   "veloce-lenta-veloce", "both" mantiene l'elemento nello stato iniziale prima dell'animazione */
+  position: relative;
 }
 
 
@@ -466,12 +467,10 @@ Si resetta "font-style: normal"  perché il "blockquote" eredita
   position: relative;
   min-width: 220px;}
 
-.tappa-su { justify-content: flex-start; }
 
 .tappa-su .tappa-contenuto { padding-bottom: 5px; }
 
 
-.tappa-giu { justify-content: flex-start; }
 
 
 .tappa-giu .tappa-contenuto { padding-top: 260px; }
@@ -484,7 +483,6 @@ Si resetta "font-style: normal"  perché il "blockquote" eredita
   border: 2px solid #2d5a27; /* questo crea un alone attorno al cerchio*/
   box-shadow: 0 0 0 4px rgba(200,169,90,0.2); /* connesso alla riga di prima ne definisce l'ombra */
   z-index: 1; /*  imposta il pallino sopra la linea */
-  transition: transform 0.3s ;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -540,7 +538,6 @@ Si resetta "font-style: normal"  perché il "blockquote" eredita
   color: rgb(0, 0, 0);
   text-decoration: underline;
 }
-.fonte-timeline a:hover { color: #000000; }
 
 
 
@@ -810,7 +807,6 @@ div + due span, uno per il simbolo della freccia, uno per il testo. Usiamo quest
   background-size: cover;
   background-position: center;
   padding: 112px 0;
-  background-color: #1c3a1e;
   position: relative;
 }
 

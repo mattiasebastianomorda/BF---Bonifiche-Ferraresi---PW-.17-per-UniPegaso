@@ -294,7 +294,7 @@ etichette apposite che vengono sovrascritte a quesaìta) */ {
 .card-img-box /* il primo fa da "finestra" per l'immagine
 con overflow hidden che fa da maschera*/ {
 
-  height: 120px;
+  height: 180px;
   overflow: hidden;
 }
 
@@ -866,6 +866,7 @@ che altrimenti resterebbe invisibile sullo sfondo verde scuro
   overflow: hidden;
   background-color: #f5efe0;
   transition: transform 0.3s , border-color 0.3s ;
+
 }
 
 

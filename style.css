@@ -506,8 +506,7 @@ Si resetta "font-style: normal"  perché il "blockquote" eredita
   border: 2px solid rgb(5, 57, 13);
   margin: 0 auto 8px;
   transition: border-color 0.3s ;}
-.tappa:hover .foto-tappa { border-color: rgb(6, 59, 17); }
-/* stando col cursore sull'immagine l'opacità si alza dal 25 al 70 percento */
+
 
 
 .anno-tappa {

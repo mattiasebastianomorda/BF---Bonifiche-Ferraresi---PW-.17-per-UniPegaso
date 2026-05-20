@@ -603,7 +603,6 @@ uso una classe separata da titolo-sezione per chiarezza*/ {
   transition: transform 0.3s ;
 }
 
-.box-numero:hover { transform: translateY(-3px); }
 
 
 
